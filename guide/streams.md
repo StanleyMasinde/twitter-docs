@@ -1,3 +1,7 @@
+---
+description: Add and manage Twitter filtered stream rules, then read matching events in your terminal with Twitter CLI.
+---
+
 # Filtered streams
 
 Manage filtered stream rules and read matching events in a terminal. This guide is for people with developer app access to the streaming API. A stream stays connected until you stop it; use a separate terminal for other CLI commands.

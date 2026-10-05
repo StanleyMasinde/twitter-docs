@@ -1,3 +1,7 @@
+---
+description: Configure Twitter CLI credentials, authorize your account with OAuth 2.0, validate settings, and switch between accounts.
+---
+
 # Configuration and authentication
 
 Set up credentials, authorize your account, and switch between accounts. This guide is for people who have [installed Twitter CLI](./get-started) and have a Twitter developer app.

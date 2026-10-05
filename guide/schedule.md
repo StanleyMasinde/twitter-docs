@@ -1,3 +1,7 @@
+---
+description: Schedule tweets with Twitter CLI, inspect the local queue, and run due posts with your operating system scheduler.
+---
+
 # Schedule tweets
 
 Queue text tweets for later delivery. You must [configure and authorize Twitter CLI](./configuration) first. The CLI stores the queue locally; it sends due tweets only when `twitter schedule run` executes.

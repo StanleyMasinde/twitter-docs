@@ -1,3 +1,7 @@
+---
+description: Use Unix pipes, files, heredocs, and clipboard commands to write or schedule tweets with Twitter CLI.
+---
+
 # Unix examples
 
 Use shell tools with Twitter CLI to turn text from files, commands, and the clipboard into tweets. These examples use POSIX-style shell syntax that works in common macOS and Linux shells. Configure and authorize the CLI before trying them.

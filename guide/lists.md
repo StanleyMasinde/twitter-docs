@@ -1,3 +1,7 @@
+---
+description: Create, update, and manage Twitter lists from the terminal with Twitter CLI.
+---
+
 # Lists
 
 Create and manage Twitter lists from the terminal. List commands use the account selected in [Configuration](./configuration). IDs identify lists and users; display names are not accepted where an ID flag is required.

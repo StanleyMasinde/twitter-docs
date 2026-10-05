@@ -1,3 +1,7 @@
+---
+description: Like, bookmark, follow, mute, block, and retweet from your terminal with Twitter CLI account commands.
+---
+
 # Account actions
 
 Use likes, bookmarks, follows, mutes, blocks, and retweets from the terminal. These commands act on the account selected by `current_account` in [Configuration](./configuration). Run `twitter me` before changing an account if you are unsure which one is active.

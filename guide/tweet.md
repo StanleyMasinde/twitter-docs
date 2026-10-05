@@ -1,3 +1,7 @@
+---
+description: Post tweets, attach images, pipe text from a command, and write threads with Twitter CLI.
+---
+
 # Tweet and write threads
 
 Publish text, images, and threads from a terminal. You must [configure and authorize Twitter CLI](./configuration) first. Tweeting sends content immediately; the CLI does not show a confirmation prompt.

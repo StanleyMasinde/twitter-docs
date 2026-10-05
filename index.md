@@ -1,6 +1,7 @@
 ---
 layout: home
 title: Twitter CLI
+description: Install Twitter CLI to post tweets and threads, schedule posts, and manage your Twitter account from the terminal.
 ---
 
 <div class="home-shell">

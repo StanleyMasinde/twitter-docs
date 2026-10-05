@@ -1,3 +1,7 @@
+---
+description: Read direct message events, start conversations, and send messages from the terminal with Twitter CLI.
+---
+
 # Direct messages
 
 Read and send direct messages (DMs) from the terminal. These commands use the account selected in [Configuration](./configuration). Sending a message is immediate and has no confirmation prompt.

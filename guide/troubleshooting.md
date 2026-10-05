@@ -1,3 +1,7 @@
+---
+description: Fix Twitter CLI installation, configuration, authentication, tweet publishing, and scheduler errors.
+---
+
 # Troubleshooting
 
 Diagnose installation, configuration, authentication, tweeting, and scheduler failures. Start with the failing command's `--help` output and note the full error message. Do not share credentials or complete callback URLs when asking for help.

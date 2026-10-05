@@ -1,3 +1,7 @@
+---
+description: Install Twitter CLI on macOS, Linux, or Windows, connect a developer app, and publish your first tweet from the terminal.
+---
+
 # Get started
 
 Install Twitter CLI, connect a developer app, and send a first tweet. This guide is for people who can run commands in a terminal. You need a Twitter account with access to a developer app that can write tweets.

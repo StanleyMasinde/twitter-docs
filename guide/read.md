@@ -1,3 +1,7 @@
+---
+description: Look up tweet IDs, search recent tweets, inspect timelines, and find users with Twitter CLI.
+---
+
 # Read and search tweets
 
 Look up tweets, search for tweets, inspect a timeline, and find users from the terminal. Configure Twitter CLI first. Some reads use an app bearer token; user-specific reads use the account you authorized in [Configuration](./configuration).

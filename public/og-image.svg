@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Twitter CLI documentation</title>
+  <desc id="description">Tweet without going to twitter.com. A terminal example alongside the Twitter CLI title.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="0" y="0" width="12" height="630" fill="#3869df"/>
+  <circle cx="88" cy="86" r="7" fill="#3869df"/>
+  <text x="111" y="93" fill="#294fbd" font-family="Menlo, monospace" font-size="22" font-weight="700" letter-spacing="2">TWITTER CLI · DOCS</text>
+  <text x="80" y="238" fill="#27313d" font-family="Arial" font-size="78" font-weight="bold">Tweet without</text>
+  <text x="80" y="338" fill="#27313d" font-family="Arial" font-size="78" font-weight="bold">going to</text>
+  <text x="80" y="438" fill="#294fbd" font-family="Arial" font-size="78" font-weight="bold">twitter.com.</text>
+  <text x="84" y="522" fill="#536171" font-family="Helvetica Neue, Arial, sans-serif" font-size="28">Write, schedule, and manage tweets from your terminal.</text>
+  <line x1="80" y1="576" x2="1120" y2="576" stroke="#d8dfe9" stroke-width="2"/>
+  <text x="82" y="603" fill="#647084" font-family="Menlo, monospace" font-size="18">twitter.stanleymasinde.com</text>
+  <g transform="translate(772 98)">
+    <rect width="355" height="336" rx="13" fill="#252d39"/>
+    <path d="M13 0h329a13 13 0 0 1 13 13v42H0V13A13 13 0 0 1 13 0Z" fill="#303a49"/>
+    <circle cx="25" cy="28" r="5" fill="#8090a4"/>
+    <circle cx="44" cy="28" r="5" fill="#8090a4"/>
+    <circle cx="63" cy="28" r="5" fill="#8090a4"/>
+    <text x="23" y="103" fill="#7fa2ff" font-family="Menlo, monospace" font-size="19">$</text>
+    <text x="48" y="103" fill="#edf2fa" font-family="Menlo, monospace" font-size="19">twitter tweet</text>
+    <text x="23" y="134" fill="#edf2fa" font-family="Menlo, monospace" font-size="19">  --body "Shipping today"</text>
+    <text x="23" y="184" fill="#aab8c9" font-family="Menlo, monospace" font-size="18">Tweet Id: …</text>
+    <line x1="23" y1="220" x2="332" y2="220" stroke="#4c5969"/>
+    <text x="23" y="266" fill="#7fa2ff" font-family="Menlo, monospace" font-size="19">$</text>
+    <text x="48" y="266" fill="#edf2fa" font-family="Menlo, monospace" font-size="19">twitter schedule list</text>
+    <rect x="23" y="289" width="208" height="12" rx="6" fill="#4d5c70"/>
+  </g>
+</svg>
