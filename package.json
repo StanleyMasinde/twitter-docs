@@ -5,7 +5,9 @@
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:preview": "vitepress preview",
+    "deploy": "pnpm docs:build && wrangler deploy",
+    "deploy:dry-run": "pnpm docs:build && wrangler deploy --dry-run"
   },
   "license": "MIT",
   "devEngines": {
@@ -20,5 +22,8 @@
   "dependencies": {
     "vitepress": "^1.6.4"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "wrangler": "4.135.0"
+  }
 }
