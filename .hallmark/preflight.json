@@ -1,0 +1,8 @@
+{
+  "framework": "VitePress",
+  "fontStack": "VitePress default before Hallmark",
+  "palette": "VitePress default before Hallmark",
+  "motion": "No motion library",
+  "spacing": "No existing spacing tokens",
+  "source": ["package.json", ".vitepress/config.mts", ".vitepress/config.ts"]
+}

@@ -1,0 +1,142 @@
+# Get started
+
+Install Twitter CLI, connect a developer app, and send a first tweet. This guide is for people who can run commands in a terminal. You need a Twitter account with access to a developer app that can write tweets.
+
+## Before you begin
+
+Twitter CLI is a standalone executable named `twitter`. It uses the Twitter API. API access and write permissions depend on your developer app; installing the executable does not grant API access.
+
+Have these ready:
+
+- A Twitter developer app with **Read and write** permissions.
+- The app's OAuth 2.0 client ID and client secret, plus its bearer token for app-only reads and usage.
+- A browser you can use for the first authorization.
+
+Set the app's OAuth 2.0 callback URL to `http://127.0.0.1:3000`. The CLI asks you to paste the complete callback URL after you authorize it. See [Configure authentication](./configuration#authorize-the-cli) for that step.
+
+## Install Twitter CLI
+
+Choose the commands for your operating system. On macOS and Linux, review the [Unix installer script](https://github.com/StanleyMasinde/twitter/blob/main/install.sh) before running it. On Windows x64, install Git, Rust with the MSVC toolchain, and Visual Studio C++ build tools before following the source-build tab. The release workflow for version <CliVersion /> does not publish a Windows archive.
+
+::: code-group
+
+```sh [macOS and Linux]
+curl -fsSL https://raw.githubusercontent.com/StanleyMasinde/twitter/main/install.sh | sh
+```
+
+```powershell [Windows x64 · PowerShell]
+git clone https://github.com/microsoft/vcpkg.git "$env:USERPROFILE\vcpkg"
+& "$env:USERPROFILE\vcpkg\bootstrap-vcpkg.bat"
+$env:VCPKG_ROOT = "$env:USERPROFILE\vcpkg"
+$env:VCPKGRS_TRIPLET = "x64-windows-static-md"
+& "$env:VCPKG_ROOT\vcpkg.exe" install "sqlite3:x64-windows-static-md" "curl:x64-windows-static-md"
+
+git clone https://github.com/StanleyMasinde/twitter.git
+cd twitter
+cargo build --release --locked
+.\target\release\twitter.exe --version
+```
+
+:::
+
+### macOS and Linux options
+
+The Unix installer detects the operating system and architecture, downloads the matching release archive, and installs `twitter` in `/usr/local/bin`. It uses the release metadata to find the archive and verify its SHA-256 digest. A release without the digest cannot be installed by this script.
+
+If you prefer an install directory owned by your user, run:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/StanleyMasinde/twitter/main/install.sh | TWITTER_INSTALL="$HOME/.local/bin" sh
+```
+
+Add that directory to your shell's `PATH` if `twitter` is not found. To install a particular release, pass its tag to the script:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/StanleyMasinde/twitter/main/install.sh | sh -s v1.10.0
+```
+
+Replace `v1.10.0` with the release tag you want from [Releases](https://github.com/StanleyMasinde/twitter/releases).
+
+### Windows archive option
+
+The release workflow does not publish a Windows archive. First check [Releases](https://github.com/StanleyMasinde/twitter/releases) for an archive matching your architecture. If one is available, review the [PowerShell installer](https://github.com/StanleyMasinde/twitter/blob/main/install.ps1), then run it in PowerShell:
+
+```powershell
+& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/StanleyMasinde/twitter/main/install.ps1")))
+```
+
+The installer uses `%USERPROFILE%\bin` by default and adds that directory to your user `PATH`. It verifies a SHA-256 digest when one is available. Install the Microsoft Visual C++ Redistributable for your architecture before running the CLI. Administrator rights are only needed for a protected install directory.
+
+### Windows source build notes
+
+The source-build tab creates `target\release\twitter.exe` in the cloned repository. Before continuing with the guides, move it to a directory on your `PATH` so you can call it as `twitter`. The procedure is for x64; the native dependency triplet must match your architecture on other Windows systems.
+
+## Verify the executable
+
+Run the commands for the way you installed the CLI. A Windows archive installation, or a source build already moved onto your `PATH`, can use `twitter --version` and `twitter --help` as shown in the first tab:
+
+::: code-group
+
+```sh [macOS and Linux]
+twitter --version
+twitter --help
+```
+
+```powershell [Windows source build]
+.\target\release\twitter.exe --version
+.\target\release\twitter.exe --help
+```
+
+:::
+
+The first command prints the installed version. The second lists top-level commands. If the shell cannot find `twitter`, see [Troubleshooting](./troubleshooting#twitter-is-not-found).
+
+## Create a configuration file
+
+Run the initializer:
+
+```sh
+twitter config --init
+```
+
+`--init` writes a template; it does **not** ask for credentials, and it replaces an existing configuration. On macOS or Linux, version <CliVersion /> stops before writing a new file because it tries to set permissions first. If that happens, follow the path and recovery steps in [Troubleshooting](./troubleshooting#config-init-fails-to-set-file-permissions), then run `--init` again.
+
+Open the template with `twitter config --edit`, replace the placeholder values, and save it. This command opens the CLI's configuration file for your operating system; you do not need to know its path. See [Configuration](./configuration) for each field and a multi-account example.
+
+## Authorize and check the account
+
+Run:
+
+```sh
+twitter me
+```
+
+On first use, the CLI prints an authorization URL. Open it, approve access, and paste the **full callback URL** into the terminal when asked. The browser might show an unreachable local page after redirecting to `127.0.0.1:3000`; copy the URL from its address bar. `twitter me` then prints the authenticated account's ID, name, and username.
+
+## Publish a first tweet
+
+::: warning Publishes immediately
+The command below sends a real tweet from the selected account. Run `twitter me` first if you need to check the account.
+:::
+
+Run:
+
+```sh
+twitter tweet --body "Hello from my terminal"
+```
+
+A successful request prints the new tweet's ID and body. For editor input, files, images, and threads, see [Tweet and write threads](./tweet).
+
+## Update the CLI
+
+On macOS, run `twitter update` to fetch the latest matching release. If your executable is in a root-owned directory such as `/usr/local/bin`, the update may need elevated privileges; use `sudo twitter update` only for that case. A user-owned install directory does not need `sudo`.
+
+On Linux, rerun the Unix installer from [Install Twitter CLI](#install-twitter-cli) to update. In version <CliVersion />, `twitter update` looks for a Linux archive name that differs from the release workflow's archive name, so it can report that no asset exists even when a Linux release is available. Windows users need an available release archive or a new source build.
+
+After updating, run `twitter --version`. On macOS or Linux, use `command -v twitter` to locate the executable; on Windows, use `where.exe twitter`. If your shell still finds an older binary, see [Troubleshooting](./troubleshooting#twitter-is-not-found).
+
+## Next steps
+
+- [Schedule tweets](./schedule) and set up automatic delivery.
+- [Read and search](./read) without opening the website.
+- [Command reference](./commands) for the full command tree.

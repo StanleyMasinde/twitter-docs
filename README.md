@@ -1,2 +1,31 @@
-# twitter-docs
-Docs for the Twitter CLI
+# Twitter CLI Documentation Site
+
+This site documents [Twitter CLI](https://github.com/StanleyMasinde/twitter), the terminal app whose slogan is “Tweet without going to twitter.com.” It is for people installing, configuring, and using the CLI. The CLI source code and release binaries live in the linked repository.
+
+## Run Locally
+
+Install the site dependencies with pnpm, then start the development server:
+
+```sh
+pnpm install
+pnpm docs:dev
+```
+
+Open the local URL printed by VitePress. To verify a production build, run:
+
+```sh
+pnpm docs:build
+pnpm docs:preview
+```
+
+## Edit the Documentation
+
+- `index.md` is the homepage.
+- `guide/` contains the setup, tweeting, Unix examples, scheduling, reading, account, list, message, stream, troubleshooting, and command-reference pages.
+- `.vitepress/config.mts` defines navigation, search, and site metadata. `.vitepress/config.ts` re-exports it for compatibility.
+- `.vitepress/cli-version.ts` is the version label used by guide pages and version-specific notes.
+- `.vitepress/theme/custom.css` and `tokens.css` define the visual design.
+
+The guides use VitePress code groups for platform choices and warning containers for commands that publish or delete immediately. Keep those notices adjacent to the relevant commands when editing a page.
+
+Check commands with `twitter COMMAND --help` and the CLI source before changing examples. Update `.vitepress/cli-version.ts` after checking the docs against a new CLI version. Keep credentials out of examples and issues.
