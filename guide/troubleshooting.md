@@ -14,7 +14,7 @@ The Unix installer defaults to `/usr/local/bin`. With `TWITTER_INSTALL`, it uses
 
 ## `config --init` fails to set file permissions
 
-On macOS and Linux, version <CliVersion /> attempts to set permissions on the configuration file before it creates the file. If this is your first run, `twitter config --init` prints the file path in its error message.
+If `twitter config --init` fails while setting file permissions on macOS or Linux, it may be trying to set permissions before creating the file. If this is your first run, `twitter config --init` prints the file path in its error message.
 
 1. Copy that complete path as `CONFIG_FILE`. Set `CONFIG_DIR` to its parent directory.
 2. Create the directory and empty file with these commands, replacing both placeholders with the paths from your system:
@@ -73,4 +73,4 @@ The scheduler must run as the user who created the queue and authorized the CLI.
 
 Use `twitter usage` to inspect reported API usage and check the developer app's access to the requested endpoint. Search, DM, and stream availability may vary with API access. An empty result is not always an error: the CLI prints a no-results message for several read commands.
 
-For exact flags, run `twitter --help` or `twitter COMMAND --help`. The [command reference](./commands) maps every command group in version <CliVersion />.
+For exact flags, run `twitter --help` or `twitter COMMAND --help`. The [command reference](./commands) maps every command group.

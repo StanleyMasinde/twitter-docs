@@ -16,7 +16,7 @@ twitter schedule new --body "Tuesday update" --on "Tuesday"
 twitter schedule new --body "Soon" --in "30 minutes"
 ```
 
-`--at` and `--in` are aliases for `--on`, so use one of them per command. The CLI parses the expression using the local time zone of the user running it. If a parsed time falls in the past, version <CliVersion /> advances it by one day. Always list the queue after adding a tweet to confirm the resolved send time.
+`--at` and `--in` are aliases for `--on`, so use one of them per command. The CLI parses the expression using the local time zone of the user running it. If a parsed time falls in the past, the CLI advances it by one day. Always list the queue after adding a tweet to confirm the resolved send time.
 
 Scheduling saves the text locally; it does not publish the tweet immediately. The queue is stored on this computer, so another installation does not see it. The scheduler does not accept `--image`. To queue the contents of a file, see [Unix examples](./examples#schedule-the-contents-of-a-file).
 
@@ -51,7 +51,7 @@ Run:
 twitter schedule run
 ```
 
-The command sends **pending** rows whose scheduled time has passed. It marks each successful row `sent` and stores a sent time. It marks a failed row `failed`, increments its attempt count, and stores the error. It prints sent and failed totals when it finishes. Failed rows are not picked up by the next `schedule run`; there is no retry or single-row edit command in version <CliVersion />. Recreate a failed tweet with `schedule new` after fixing the cause.
+The command sends **pending** rows whose scheduled time has passed. It marks each successful row `sent` and stores a sent time. It marks a failed row `failed`, increments its attempt count, and stores the error. It prints sent and failed totals when it finishes. Failed rows are not picked up by the next `schedule run`; there is no retry or single-row edit command. Recreate a failed tweet with `schedule new` after fixing the cause.
 
 If nothing is due, the CLI prints `No pending scheduled tweets to run.`
 

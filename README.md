@@ -23,12 +23,11 @@ pnpm docs:preview
 - `index.md` is the homepage.
 - `guide/` contains the setup, tweeting, Unix examples, scheduling, reading, account, list, message, stream, troubleshooting, and command-reference pages.
 - `.vitepress/config.mts` defines navigation, search, and site metadata. `.vitepress/config.ts` re-exports it for compatibility.
-- `.vitepress/cli-version.ts` is the version label used by guide pages and version-specific notes.
 - `.vitepress/theme/custom.css` and `tokens.css` define the visual design.
 
 The guides use VitePress code groups for platform choices and warning containers for commands that publish or delete immediately. Keep those notices adjacent to the relevant commands when editing a page.
 
-Check commands with `twitter COMMAND --help` and the CLI source before changing examples. Update `.vitepress/cli-version.ts` after checking the docs against a new CLI version. Keep credentials out of examples and issues.
+Check commands with `twitter COMMAND --help` and the CLI source before changing examples. Keep credentials out of examples and issues.
 
 ## Deploy to Cloudflare Workers
 

@@ -16,7 +16,7 @@ Publish text, images, and threads from a terminal. You must [configure and autho
 | Standard input | `cat DRAFT_FILE | twitter tweet` | A draft stored in a file or produced by another command. |
 | Editor | `twitter tweet --editor` | A tweet or thread you want to compose before sending. |
 
-Replace `TEXT` with the tweet body and `DRAFT_FILE` with your file path. If you provide `--body`, it takes precedence over other text input. If standard input is piped in, the CLI reads it and trims whitespace at the ends, even when you also pass `--editor`. Use `--editor` with an interactive terminal when you want the editor: bare `twitter tweet` does not open it in version <CliVersion />.
+Replace `TEXT` with the tweet body and `DRAFT_FILE` with your file path. If you provide `--body`, it takes precedence over other text input. If standard input is piped in, the CLI reads it and trims whitespace at the ends, even when you also pass `--editor`. Use `--editor` with an interactive terminal when you want the editor: bare `twitter tweet` does not open it.
 
 ## Tweet a short message
 

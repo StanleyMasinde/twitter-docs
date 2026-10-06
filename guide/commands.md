@@ -4,7 +4,7 @@ description: Find Twitter CLI commands and options for tweeting, scheduling, acc
 
 # Command reference
 
-Find a Twitter CLI command and its main options. This reference describes the `twitter` <CliVersion /> command tree. Run `twitter COMMAND --help` for the exact syntax on your version. Commands that change account data take effect immediately unless a guide says otherwise.
+Find a Twitter CLI command and its main options. This reference describes the `twitter` command tree. Run `twitter COMMAND --help` for the exact syntax on your version. Commands that change account data take effect immediately unless a guide says otherwise.
 
 ## Global commands
 

@@ -6,6 +6,18 @@ description: Install Twitter CLI on macOS, Linux, or Windows, connect a develope
 
 Install Twitter CLI, connect a developer app, and send a first tweet. This guide is for people who can run commands in a terminal. You need a Twitter account with access to a developer app that can write tweets.
 
+## Documentation compatibility
+
+These docs assume Twitter CLI v1.10.0 and later. For instructions specific to a newer release, open the [CLI repository](https://github.com/StanleyMasinde/twitter), check out that release's tag, and read its `README.md`:
+
+```sh
+git clone https://github.com/StanleyMasinde/twitter.git
+cd twitter
+git checkout RELEASE_TAG
+```
+
+Replace `RELEASE_TAG` with the tag for your release from [Releases](https://github.com/StanleyMasinde/twitter/releases). Read `README.md` in that checkout for the release's setup and usage instructions.
+
 ## Before you begin
 
 Twitter CLI is a standalone executable named `twitter`. It uses the Twitter API. API access and write permissions depend on your developer app; installing the executable does not grant API access.
@@ -102,7 +114,7 @@ Run the initializer:
 twitter config --init
 ```
 
-`--init` writes a template; it does **not** ask for credentials, and it replaces an existing configuration. On macOS or Linux, version <CliVersion /> stops before writing a new file because it tries to set permissions first. If that happens, follow the path and recovery steps in [Troubleshooting](./troubleshooting#config-init-fails-to-set-file-permissions), then run `--init` again.
+`--init` writes a template; it does **not** ask for credentials, and it replaces an existing configuration. If initialization fails while setting file permissions, it may stop before writing a new file. If that happens, follow the path and recovery steps in [Troubleshooting](./troubleshooting#config-init-fails-to-set-file-permissions), then run `--init` again.
 
 Open the template with `twitter config --edit`, replace the placeholder values, and save it. This command opens the CLI's configuration file for your operating system; you do not need to know its path. See [Configuration](./configuration) for each field and a multi-account example.
 
@@ -134,7 +146,7 @@ A successful request prints the new tweet's ID and body. For editor input, files
 
 On macOS, run `twitter update` to fetch the latest matching release. If your executable is in a root-owned directory such as `/usr/local/bin`, the update may need elevated privileges; use `sudo twitter update` only for that case. A user-owned install directory does not need `sudo`.
 
-On Linux, rerun the Unix installer from [Install Twitter CLI](#install-twitter-cli) to update. In version <CliVersion />, `twitter update` looks for a Linux archive name that differs from the release workflow's archive name, so it can report that no asset exists even when a Linux release is available. On Windows, rerun the PowerShell installer from [Install Twitter CLI](#install-twitter-cli) to download and install the latest release for your architecture.
+On Linux, rerun the Unix installer from [Install Twitter CLI](#install-twitter-cli) to update. If `twitter update` reports that no asset exists even when a Linux release is available, rerun the installer to fetch the matching archive. On Windows, rerun the PowerShell installer from [Install Twitter CLI](#install-twitter-cli) to download and install the latest release for your architecture.
 
 After updating, run `twitter --version`. On macOS or Linux, use `command -v twitter` to locate the executable; on Windows, use `where.exe twitter`. If your shell still finds an older binary, see [Troubleshooting](./troubleshooting#twitter-is-not-found).
 

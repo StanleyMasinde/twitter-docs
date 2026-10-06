@@ -49,7 +49,7 @@ twitter users by-username --username USERNAME
 twitter tweets user --id USER_ID
 ```
 
-Replace `USERNAME` with the account name without `@`, and replace `USER_ID` with the ID returned by the lookup. The `tweets user` command fetches 10 results in version <CliVersion /> and does not expose a result-count flag.
+Replace `USERNAME` with the account name without `@`, and replace `USER_ID` with the ID returned by the lookup. The `tweets user` command fetches 10 results and does not expose a result-count flag.
 
 ## Read your home timeline and mentions
 

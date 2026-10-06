@@ -35,8 +35,6 @@ body { font-family: var(--font-body); background: var(--color-paper); color: var
 .VPDoc p, .VPDoc li { line-height: 1.75; }
 .VPDoc :not(pre) > code { color: var(--color-accent-strong); }
 .VPDoc a { text-underline-offset: 3px; }
-.cli-version-badge { display: inline-block; margin: 0 0 var(--space-lg); padding: .3rem .6rem; border: var(--rule-thin) solid var(--color-rule); border-radius: var(--radius-sm); color: var(--color-muted); font: 500 .72rem/1.4 var(--font-mono); letter-spacing: .02em; }
-.cli-version-badge strong { color: var(--color-accent-strong); font-weight: 600; }
 .VPFooter { border-top: var(--rule-thin) solid var(--color-rule); }
 .VPContent.is-home { padding-bottom: 0; }
 .home-shell { max-width: 1200px; margin: auto; padding: var(--space-3xl) var(--space-lg) var(--space-3xl); }

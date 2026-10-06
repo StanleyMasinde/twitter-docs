@@ -10,7 +10,7 @@ Set up credentials, authorize your account, and switch between accounts. This gu
 
 Twitter CLI determines the configuration file location for your operating system. Use its commands to create, edit, and validate the file instead of assuming a particular path. It stores OAuth tokens and scheduled tweets separately in the operating system's application data location. Treat both locations as private account data.
 
-`twitter config --init` writes a single-account template and **overwrites** any existing file. It does not prompt for secrets. On macOS or Linux, version <CliVersion /> may fail before writing the file because it tries to set permissions first; see [Troubleshooting](./troubleshooting#config-init-fails-to-set-file-permissions).
+`twitter config --init` writes a single-account template and **overwrites** any existing file. It does not prompt for secrets. On macOS or Linux, initialization may fail before writing the file because it tries to set permissions first; see [Troubleshooting](./troubleshooting#config-init-fails-to-set-file-permissions).
 
 To open the file in an editor, run:
 
@@ -33,9 +33,9 @@ client_id = "CLIENT_ID"
 client_secret = "CLIENT_SECRET"
 ```
 
-Replace the uppercase placeholders with values from your developer app. This is the template produced by `twitter config --init` in version <CliVersion />. `client_id` and `client_secret` are required for OAuth 2.0 account commands. App-only reads and `twitter usage` use `bearer_token`.
+Replace the uppercase placeholders with values from your developer app. This is the template produced by `twitter config --init`. `client_id` and `client_secret` are required for OAuth 2.0 account commands. App-only reads and `twitter usage` use `bearer_token`.
 
-The configuration format also accepts `consumer_key`, `consumer_secret`, `access_token`, and `access_secret` fields. The version <CliVersion /> initializer omits them, and the current CLI code does not read them for its commands. You do not need to add them for the workflows in these docs.
+The configuration format also accepts `consumer_key`, `consumer_secret`, `access_token`, and `access_secret` fields. The initializer omits them, and the current CLI code does not read them for its commands. You do not need to add them for the workflows in these docs.
 
 `current_account` selects an entry from `[[accounts]]` by a zero-based index. `0` means the first entry.
 
