@@ -20,25 +20,16 @@ Set the app's OAuth 2.0 callback URL to `http://127.0.0.1:3000`. The CLI asks yo
 
 ## Install Twitter CLI
 
-Choose the commands for your operating system. On macOS and Linux, review the [Unix installer script](https://github.com/StanleyMasinde/twitter/blob/main/install.sh) before running it. On Windows x64, install Git, Rust with the MSVC toolchain, and Visual Studio C++ build tools before following the source-build tab. The release workflow for version <CliVersion /> does not publish a Windows archive.
+Choose the commands for your operating system. On macOS and Linux, review the [Unix installer script](https://github.com/StanleyMasinde/twitter/blob/main/install.sh) before running it. On Windows, use PowerShell 7 or later and review the [PowerShell installer script](https://github.com/StanleyMasinde/twitter/blob/main/install.ps1) before running it.
 
 ::: code-group
 
 ```sh [macOS and Linux]
-curl -fsSL https://raw.githubusercontent.com/StanleyMasinde/twitter/main/install.sh | sh
+curl -fsSL https://twitter.stanleymasinde.com/install.sh | sh
 ```
 
-```powershell [Windows x64 · PowerShell]
-git clone https://github.com/microsoft/vcpkg.git "$env:USERPROFILE\vcpkg"
-& "$env:USERPROFILE\vcpkg\bootstrap-vcpkg.bat"
-$env:VCPKG_ROOT = "$env:USERPROFILE\vcpkg"
-$env:VCPKGRS_TRIPLET = "x64-windows-static-md"
-& "$env:VCPKG_ROOT\vcpkg.exe" install "sqlite3:x64-windows-static-md" "curl:x64-windows-static-md"
-
-git clone https://github.com/StanleyMasinde/twitter.git
-cd twitter
-cargo build --release --locked
-.\target\release\twitter.exe --version
+```powershell [Windows · PowerShell 7+]
+irm https://twitter.stanleymasinde.com/install.ps1 | iex
 ```
 
 :::
@@ -50,34 +41,42 @@ The Unix installer detects the operating system and architecture, downloads the 
 If you prefer an install directory owned by your user, run:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/StanleyMasinde/twitter/main/install.sh | TWITTER_INSTALL="$HOME/.local/bin" sh
+curl -fsSL https://twitter.stanleymasinde.com/install.sh | TWITTER_INSTALL="$HOME/.local/bin" sh
 ```
 
 Add that directory to your shell's `PATH` if `twitter` is not found. To install a particular release, pass its tag to the script:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/StanleyMasinde/twitter/main/install.sh | sh -s v1.10.0
+curl -fsSL https://twitter.stanleymasinde.com/install.sh | sh -s v1.10.0
 ```
 
 Replace `v1.10.0` with the release tag you want from [Releases](https://github.com/StanleyMasinde/twitter/releases).
 
-### Windows archive option
+### Windows options
 
-The release workflow does not publish a Windows archive. First check [Releases](https://github.com/StanleyMasinde/twitter/releases) for an archive matching your architecture. If one is available, review the [PowerShell installer](https://github.com/StanleyMasinde/twitter/blob/main/install.ps1), then run it in PowerShell:
+The installer selects the x64 or ARM64 release archive for your system, extracts `twitter.exe`, and installs it in `$env:USERPROFILE\bin`. It adds that directory to your user and current session `PATH` and verifies the SHA-256 digest when one is available. Git, Rust, and C++ build tools are not required to install a release archive.
+
+Install the Microsoft Visual C++ Redistributable for your architecture before running the CLI. Administrator rights are only needed for a protected install directory.
+
+To choose an install directory, set `TWITTER_INSTALL` before running the installer:
 
 ```powershell
-& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/StanleyMasinde/twitter/main/install.ps1")))
+$env:TWITTER_INSTALL = "$env:USERPROFILE\.local\bin"
+irm https://twitter.stanleymasinde.com/install.ps1 | iex
 ```
 
-The installer uses `%USERPROFILE%\bin` by default and adds that directory to your user `PATH`. It verifies a SHA-256 digest when one is available. Install the Microsoft Visual C++ Redistributable for your architecture before running the CLI. Administrator rights are only needed for a protected install directory.
+To install a particular release, pass its tag to the installer:
 
-### Windows source build notes
+```powershell
+$installer = irm https://twitter.stanleymasinde.com/install.ps1
+& ([scriptblock]::Create($installer)) -Version v1.10.0
+```
 
-The source-build tab creates `target\release\twitter.exe` in the cloned repository. Before continuing with the guides, move it to a directory on your `PATH` so you can call it as `twitter`. The procedure is for x64; the native dependency triplet must match your architecture on other Windows systems.
+Replace `v1.10.0` with a release tag that includes a Windows archive for your architecture from [Releases](https://github.com/StanleyMasinde/twitter/releases).
 
 ## Verify the executable
 
-Run the commands for the way you installed the CLI. A Windows archive installation, or a source build already moved onto your `PATH`, can use `twitter --version` and `twitter --help` as shown in the first tab:
+After installation, check the version and available commands:
 
 ::: code-group
 
@@ -86,9 +85,9 @@ twitter --version
 twitter --help
 ```
 
-```powershell [Windows source build]
-.\target\release\twitter.exe --version
-.\target\release\twitter.exe --help
+```powershell [Windows · PowerShell 7+]
+twitter --version
+twitter --help
 ```
 
 :::
@@ -135,7 +134,7 @@ A successful request prints the new tweet's ID and body. For editor input, files
 
 On macOS, run `twitter update` to fetch the latest matching release. If your executable is in a root-owned directory such as `/usr/local/bin`, the update may need elevated privileges; use `sudo twitter update` only for that case. A user-owned install directory does not need `sudo`.
 
-On Linux, rerun the Unix installer from [Install Twitter CLI](#install-twitter-cli) to update. In version <CliVersion />, `twitter update` looks for a Linux archive name that differs from the release workflow's archive name, so it can report that no asset exists even when a Linux release is available. Windows users need an available release archive or a new source build.
+On Linux, rerun the Unix installer from [Install Twitter CLI](#install-twitter-cli) to update. In version <CliVersion />, `twitter update` looks for a Linux archive name that differs from the release workflow's archive name, so it can report that no asset exists even when a Linux release is available. On Windows, rerun the PowerShell installer from [Install Twitter CLI](#install-twitter-cli) to download and install the latest release for your architecture.
 
 After updating, run `twitter --version`. On macOS or Linux, use `command -v twitter` to locate the executable; on Windows, use `where.exe twitter`. If your shell still finds an older binary, see [Troubleshooting](./troubleshooting#twitter-is-not-found).
 
