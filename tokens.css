@@ -30,3 +30,15 @@
   --radius-sm: 6px;
   --radius-md: 10px;
 }
+
+.dark {
+  --color-paper: oklch(19% 0.014 250);
+  --color-surface: oklch(23% 0.016 250);
+  --color-ink: oklch(94% 0.008 258);
+  --color-body: oklch(84% 0.012 257);
+  --color-muted: oklch(72% 0.016 257);
+  --color-rule: oklch(36% 0.022 255);
+  --color-accent: oklch(74% 0.14 256);
+  --color-accent-strong: oklch(80% 0.11 256);
+  --color-accent-ink: oklch(18% 0.02 258);
+}

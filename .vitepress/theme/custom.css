@@ -2,11 +2,13 @@
 /* Hallmark · macrostructure: Workbench · tone: technical · anchor hue: cobalt · theme: Cobalt · enrichment: none · nav: N13 · footer: Ft2 */
 @import '../../tokens.css';
 
-:root {
+:root,
+.dark {
   --vp-font-family-base: var(--font-body);
   --vp-font-family-mono: var(--font-mono);
   --vp-c-bg: var(--color-paper);
   --vp-c-bg-soft: var(--color-surface);
+  --vp-c-bg-elv: var(--color-surface);
   --vp-c-bg-alt: var(--color-paper);
   --vp-c-text-1: var(--color-ink);
   --vp-c-text-2: var(--color-body);
