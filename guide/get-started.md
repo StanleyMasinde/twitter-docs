@@ -27,6 +27,7 @@ Have these ready:
 - A Twitter developer app with **Read and write** permissions.
 - The app's OAuth 2.0 client ID and client secret, plus its bearer token for app-only reads and usage.
 - A browser you can use for the first authorization.
+- On Windows, PowerShell 7 or later and the [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/) matching your CLI architecture. Install the Redistributable before running `twitter`.
 
 Set the app's OAuth 2.0 callback URL to `http://127.0.0.1:3000`. The CLI asks you to paste the complete callback URL after you authorize it. See [Configure authentication](./configuration#authorize-the-cli) for that step.
 
@@ -68,7 +69,12 @@ Replace `v1.10.0` with the release tag you want from [Releases](https://github.c
 
 The installer selects the x64 or ARM64 release archive for your system, extracts `twitter.exe`, and installs it in `$env:USERPROFILE\bin`. It adds that directory to your user and current session `PATH` and verifies the SHA-256 digest when one is available. Git, Rust, and C++ build tools are not required to install a release archive.
 
-Install the Microsoft Visual C++ Redistributable for your architecture before running the CLI. Administrator rights are only needed for a protected install directory.
+Windows builds require the Microsoft Visual C++ Redistributable runtime. Download the latest supported package directly from Microsoft for your CLI architecture:
+
+- [x64 Redistributable](https://aka.ms/vc14/vc_redist.x64.exe) for the x64 release.
+- [ARM64 Redistributable](https://aka.ms/vc14/vc_redist.arm64.exe) for the ARM64 release.
+
+Run the downloaded installer and complete the setup before running `twitter --version`. See [Microsoft's Redistributable download page](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/) for package details. Installing the Redistributable may prompt for administrator approval. The Twitter CLI installer needs administrator rights only for a protected install directory.
 
 To choose an install directory, set `TWITTER_INSTALL` before running the installer:
 
