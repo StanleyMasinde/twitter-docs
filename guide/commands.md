@@ -26,7 +26,7 @@ For installation and authorization, see [Get started](./get-started) and [Config
 | `twitter config --init` | None | Writes a template and replaces the existing config. |
 | `twitter config --edit` | None | Opens the config in an editor. |
 | `twitter config --show` | None | Shows the selected account index and client ID. |
-| `twitter config --validate` | None | Checks config file and directory permissions on Unix. |
+| `twitter config --validate` | None | Checks that the config file is readable and parses correctly, then checks file and directory permissions on Unix. |
 
 See [Tweet and write threads](./tweet) for input precedence, images, and partial thread failures. See [Unix examples](./examples) for pipes, heredocs, and clipboard input. See [Configuration](./configuration) for field meanings and the first-run file preparation needed on Unix.
 

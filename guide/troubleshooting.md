@@ -53,7 +53,7 @@ If `twitter config --init` fails while setting file permissions on macOS, Linux,
 
 ## Validation completes but commands still fail
 
-`twitter config --validate` checks file and directory permissions; it does not test credentials or make an API request. Run `twitter config --show` to confirm the selected account index and client ID, then run `twitter me` to test authorization. Check that `current_account` points to an existing `[[accounts]]` entry.
+`twitter config --validate` checks that the configuration file is readable and parses correctly, then checks Unix file and directory permissions. A missing, unreadable, or malformed file causes a nonzero exit status. The command does not test credentials or make an API request. Run `twitter config --show` to confirm the selected account index and client ID, then run `twitter me` to test authorization. Check that `current_account` points to an existing `[[accounts]]` entry.
 
 ## Authorization URL or callback fails
 

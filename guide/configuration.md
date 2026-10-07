@@ -82,7 +82,7 @@ twitter config --validate
 twitter config --show
 ```
 
-`--validate` checks Unix permissions on the configuration directory and file. It does **not** check that credentials are valid or that the app can tweet. `--show` prints the selected account index and OAuth 2.0 client ID; it does not print all secrets. Use `twitter me` to check authentication and a real tweet to check write access.
+`--validate` checks that the configuration file is readable and parses into the expected configuration structure, then checks Unix permissions on the directory and file. It exits with a nonzero status if the file is missing, unreadable, or malformed. It does **not** check that credentials are valid or that the app can tweet. `--show` prints the selected account index and OAuth 2.0 client ID; it does not print all secrets. Use `twitter me` to check authentication and a real tweet to check write access.
 
 On macOS, Linux, or Termux, the expected permissions are `700` for the configuration directory and `600` for the file. If `--validate` prints a warning, use the exact path and suggested `chmod` command in that warning. The file location may differ between systems.
 
