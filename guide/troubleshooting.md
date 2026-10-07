@@ -8,13 +8,33 @@ Diagnose installation, configuration, authentication, tweeting, and scheduler fa
 
 ## `twitter` is not found
 
-Run `command -v twitter` on macOS or Linux, or `where.exe twitter` in PowerShell. If nothing appears, verify that the installer completed and that its destination is on your `PATH`.
+Run `command -v twitter` on macOS, Linux, or Termux, or `where.exe twitter` in PowerShell. If nothing appears, verify that the installer completed and that its destination is on your `PATH`.
 
-The Unix installer defaults to `/usr/local/bin`. With `TWITTER_INSTALL`, it uses your chosen directory. The Windows installer defaults to `%USERPROFILE%\bin` and updates the user `PATH`; open a new terminal after installation if the old session cannot see it.
+The Unix installer defaults to `/usr/local/bin` on macOS and Linux, and `$PREFIX/bin` in Termux. With `TWITTER_INSTALL`, it uses your chosen directory. The Windows installer defaults to `%USERPROFILE%\bin` and updates the user `PATH`; open a new terminal after installation if the old session cannot see it.
+
+## Termux installation errors
+
+If the installer cannot find a matching asset, check [Releases](https://github.com/StanleyMasinde/twitter/releases) for an Android archive matching your architecture. A successful CI build does not publish a release. Install a tag containing Android assets using the [Termux installation instructions](./get-started#android-with-termux).
+
+If the installer reports an unsupported architecture, run `uname -m`. Supported architectures are aarch64 (arm64), armv7l or armv8l, and x86_64. i686 and i386 are not supported.
+
+If a manually downloaded binary fails to execute, check that you selected a `linux-android` archive, or `linux-androideabi` for armv7, rather than a `unknown-linux-gnu` archive. Extract and install the executable inside Termux, such as in `$PREFIX/bin`, rather than shared Android storage.
+
+If HTTPS requests fail because a certificate file is missing, install the Termux certificate package:
+
+```sh
+pkg install ca-certificates
+```
+
+If you use a custom Termux prefix and the CLI cannot find its certificate bundle, set the bundle path before retrying the request:
+
+```sh
+export SSL_CERT_FILE="$PREFIX/etc/tls/cert.pem"
+```
 
 ## `config --init` fails to set file permissions
 
-If `twitter config --init` fails while setting file permissions on macOS or Linux, it may be trying to set permissions before creating the file. If this is your first run, `twitter config --init` prints the file path in its error message.
+If `twitter config --init` fails while setting file permissions on macOS, Linux, or Termux, it may be trying to set permissions before creating the file. If this is your first run, `twitter config --init` prints the file path in its error message.
 
 1. Copy that complete path as `CONFIG_FILE`. Set `CONFIG_DIR` to its parent directory.
 2. Create the directory and empty file with these commands, replacing both placeholders with the paths from your system:

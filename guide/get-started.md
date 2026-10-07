@@ -1,5 +1,5 @@
 ---
-description: Install Twitter CLI on macOS, Linux, or Windows, connect a developer app, and publish your first tweet from the terminal.
+description: Install Twitter CLI on macOS, Linux, Windows, or Android with Termux, connect a developer app, and publish your first tweet from the terminal.
 ---
 
 # Get started
@@ -27,17 +27,24 @@ Have these ready:
 - A Twitter developer app with **Read and write** permissions.
 - The app's OAuth 2.0 client ID and client secret, plus its bearer token for app-only reads and usage.
 - A browser you can use for the first authorization.
+- On Android, Termux on Android 7 or later, with an aarch64, armv7, or x86_64 environment. 32-bit x86 (i686) is not supported.
 - On Windows, PowerShell 7 or later and the [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/) matching your CLI architecture. Install the Redistributable before running `twitter`.
 
 Set the app's OAuth 2.0 callback URL to `http://127.0.0.1:3000`. The CLI asks you to paste the complete callback URL after you authorize it. See [Configure authentication](./configuration#authorize-the-cli) for that step.
 
 ## Install Twitter CLI
 
-Choose the commands for your operating system. On macOS and Linux, review the [Unix installer script](https://github.com/StanleyMasinde/twitter/blob/main/install.sh) before running it. On Windows, use PowerShell 7 or later and review the [PowerShell installer script](https://github.com/StanleyMasinde/twitter/blob/main/install.ps1) before running it.
+Choose the commands for your operating system. On macOS, Linux, and Termux, review the [Unix installer script](https://github.com/StanleyMasinde/twitter/blob/main/install.sh) before running it. On Windows, use PowerShell 7 or later and review the [PowerShell installer script](https://github.com/StanleyMasinde/twitter/blob/main/install.ps1) before running it.
 
 ::: code-group
 
 ```sh [macOS and Linux]
+curl -fsSL https://twitter.stanleymasinde.com/install.sh | sh
+```
+
+```sh [Android · Termux]
+pkg update
+pkg install curl ca-certificates
 curl -fsSL https://twitter.stanleymasinde.com/install.sh | sh
 ```
 
@@ -64,6 +71,27 @@ curl -fsSL https://twitter.stanleymasinde.com/install.sh | sh -s v1.10.0
 ```
 
 Replace `v1.10.0` with the release tag you want from [Releases](https://github.com/StanleyMasinde/twitter/releases).
+
+### Android with Termux
+
+Use a release that contains an Android archive for your architecture. The installer downloads the matching binary and installs it into `$PREFIX/bin` without `sudo`. Android builds bundle curl, OpenSSL, and SQLite; you do not need Rust or build tools to install them.
+
+The supported release archives are:
+
+| Termux architecture | Release archive |
+| --- | --- |
+| aarch64 | `twitter-aarch64-linux-android.tar.gz` |
+| armv7 | `twitter-armv7-linux-androideabi.tar.gz` |
+| x86_64 | `twitter-x86_64-linux-android.tar.gz` |
+
+GNU/Linux archives do not run natively in Termux. See [Termux installation errors](./troubleshooting#termux-installation-errors) if installation fails.
+
+To choose another executable directory inside Termux, set `TWITTER_INSTALL` and ensure the directory is on your `PATH`:
+
+```sh
+mkdir -p "$HOME/.local/bin"
+curl -fsSL https://twitter.stanleymasinde.com/install.sh | TWITTER_INSTALL="$HOME/.local/bin" sh
+```
 
 ### Windows options
 
@@ -98,7 +126,7 @@ After installation, check the version and available commands:
 
 ::: code-group
 
-```sh [macOS and Linux]
+```sh [macOS, Linux, and Termux]
 twitter --version
 twitter --help
 ```
@@ -154,7 +182,9 @@ On macOS, run `twitter update` to fetch the latest matching release. If your exe
 
 On Linux, rerun the Unix installer from [Install Twitter CLI](#install-twitter-cli) to update. If `twitter update` reports that no asset exists even when a Linux release is available, rerun the installer to fetch the matching archive. On Windows, rerun the PowerShell installer from [Install Twitter CLI](#install-twitter-cli) to download and install the latest release for your architecture.
 
-After updating, run `twitter --version`. On macOS or Linux, use `command -v twitter` to locate the executable; on Windows, use `where.exe twitter`. If your shell still finds an older binary, see [Troubleshooting](./troubleshooting#twitter-is-not-found).
+On Termux, run `twitter update` to download the latest matching Android release and replace the executable. You can also rerun the installer from [Android with Termux](#android-with-termux). Neither method needs `sudo` for an installation in `$PREFIX/bin`.
+
+After updating, run `twitter --version`. On macOS, Linux, or Termux, use `command -v twitter` to locate the executable; on Windows, use `where.exe twitter`. If your shell still finds an older binary, see [Troubleshooting](./troubleshooting#twitter-is-not-found).
 
 ## Next steps
 

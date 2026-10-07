@@ -10,7 +10,7 @@ Set up credentials, authorize your account, and switch between accounts. This gu
 
 Twitter CLI determines the configuration file location for your operating system. Use its commands to create, edit, and validate the file instead of assuming a particular path. It stores OAuth tokens and scheduled tweets separately in the operating system's application data location. Treat both locations as private account data.
 
-`twitter config --init` writes a single-account template and **overwrites** any existing file. It does not prompt for secrets. On macOS or Linux, initialization may fail before writing the file because it tries to set permissions first; see [Troubleshooting](./troubleshooting#config-init-fails-to-set-file-permissions).
+`twitter config --init` writes a single-account template and **overwrites** any existing file. It does not prompt for secrets. On macOS, Linux, or Termux, initialization may fail before writing the file because it tries to set permissions first; see [Troubleshooting](./troubleshooting#config-init-fails-to-set-file-permissions).
 
 To open the file in an editor, run:
 
@@ -84,6 +84,6 @@ twitter config --show
 
 `--validate` checks Unix permissions on the configuration directory and file. It does **not** check that credentials are valid or that the app can tweet. `--show` prints the selected account index and OAuth 2.0 client ID; it does not print all secrets. Use `twitter me` to check authentication and a real tweet to check write access.
 
-On macOS or Linux, the expected permissions are `700` for the configuration directory and `600` for the file. If `--validate` prints a warning, use the exact path and suggested `chmod` command in that warning. The file location may differ between systems.
+On macOS, Linux, or Termux, the expected permissions are `700` for the configuration directory and `600` for the file. If `--validate` prints a warning, use the exact path and suggested `chmod` command in that warning. The file location may differ between systems.
 
 Do not commit the configuration file, paste it into an issue, or put its credential values in shell commands. If a credential is exposed, rotate it in the developer portal and update the local file.
