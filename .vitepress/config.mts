@@ -53,6 +53,11 @@ export default defineConfig({
   appearance: true,
   lastUpdated: true,
   head: [
+    ['script', {
+      type: 'module',
+      src: 'https://static.cloudflareinsights.com/beacon.min.js',
+      'data-cf-beacon': '{"token": "1d7785934f5c43dbbbbcbcd508a4da72"}'
+    }],
     ['meta', { name: 'theme-color', content: '#f7f9fc' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
