@@ -180,7 +180,11 @@ A successful request prints the new tweet's ID and body. For editor input, files
 
 On macOS, run `twitter update` to fetch the latest matching release. If your executable is in a root-owned directory such as `/usr/local/bin`, the update may need elevated privileges; use `sudo twitter update` only for that case. A user-owned install directory does not need `sudo`.
 
-On Linux, rerun the Unix installer from [Install Twitter CLI](#install-twitter-cli) to update. If `twitter update` reports that no asset exists even when a Linux release is available, rerun the installer to fetch the matching archive. On Windows, rerun the PowerShell installer from [Install Twitter CLI](#install-twitter-cli) to download and install the latest release for your architecture.
+On Linux, run `twitter update` to fetch the latest matching release. An installation in a root-owned directory may need elevated privileges. If an older CLI reports that no matching asset exists, rerun the Unix installer from [Install Twitter CLI](#install-twitter-cli).
+
+On Windows, run `twitter update`. The command downloads the matching x64 or ARM64 release and starts a helper that replaces the executable after the CLI exits. It prints the path to a log containing the replacement result or error. Run `twitter --version` after replacement completes; if the version remains unchanged, inspect that log. For older CLI versions that cannot find the Windows asset, rerun the PowerShell installer from [Install Twitter CLI](#install-twitter-cli).
+
+The updater replaces the running executable by default. Set `TWITTER_INSTALL` to update a binary in another directory instead.
 
 On Termux, run `twitter update` to download the latest matching Android release and replace the executable. You can also rerun the installer from [Android with Termux](#android-with-termux). Neither method needs `sudo` for an installation in `$PREFIX/bin`.
 
