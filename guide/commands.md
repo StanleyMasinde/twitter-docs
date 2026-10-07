@@ -66,8 +66,8 @@ Replace IDs and query text with real values. For examples, see [Read and search 
 | `twitter users by-ids` | `--ids ID1,ID2` | Gets multiple users. |
 | `twitter users by-username` | `--username NAME` | Gets one user by name. |
 | `twitter users by-usernames` | `--usernames NAME1,NAME2` | Gets multiple users by name. |
-| `twitter users following` | `--id USER_ID [--max-results N]` | Lists accounts a user follows. Default: 10. |
-| `twitter users followers` | `--id USER_ID [--max-results N]` | Lists a user's followers. Default: 10. |
+| `twitter users following` | `[--id USER_ID] [--max-results N]` | Lists accounts the selected account follows, or those followed by `USER_ID` when provided. Default: 10. |
+| `twitter users followers` | `[--id USER_ID] [--max-results N]` | Lists the selected account's followers, or those of `USER_ID` when provided. Default: 10. |
 | `twitter users follow` | `--target-user-id USER_ID` | Follows a user from the selected account. |
 | `twitter users unfollow` | `--target-user-id USER_ID` | Unfollows a user from the selected account. |
 

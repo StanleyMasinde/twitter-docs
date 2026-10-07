@@ -64,13 +64,24 @@ twitter mentions
 
 ## Inspect users and relationships
 
-Use IDs for follow lists:
+To list your followers and the accounts you follow, run:
+
+```sh
+twitter users followers
+twitter users following --max-results 25
+```
+
+When you omit `--id`, these commands use the authenticated account selected by `current_account`. Run `twitter me` to check the selected account.
+
+To look up another user or their follow lists, pass their numeric user ID:
 
 ```sh
 twitter users by-id --id USER_ID
 twitter users followers --id USER_ID --max-results 10
 twitter users following --id USER_ID --max-results 10
 ```
+
+Replace `USER_ID` with that account's ID.
 
 The user lookup also supports `by-ids --ids ID1,ID2` and `by-usernames --usernames NAME1,NAME2`. Replace those sample values with real IDs or usernames. The `--max-results` option defaults to 10 where available.
 
